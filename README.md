@@ -1,96 +1,126 @@
-# 🎥 Delphi Webcam Capture Component
-Professional VCL webcam capture component for Delphi (DirectShow-based, asynchronous, and easy to drop into existing projects).
+<!-- ========================================================= -->
+<!-- README.md (GitHub Markdown + HTML)                         -->
+<!-- Copy/paste this entire file into README.md                 -->
+<!-- ========================================================= -->
 
-![Delphi](https://img.shields.io/badge/Delphi-12.2%2B-red)
-![Platform](https://img.shields.io/badge/Platform-Win32%20%7C%20Win64-blue)
-![Framework](https://img.shields.io/badge/Framework-VCL-8A2BE2)
-![Output](https://img.shields.io/badge/Output-JPEG%20%7C%20BMP-green)
+<h1 align="center">🎥 Delphi Webcam Capture Component</h1>
 
-A lightweight `TWebcamCapture` component that captures webcam frames as `TBytes` and delivers them on the main thread through events.  
-It is designed for smooth UI behavior and straightforward integration in Delphi VCL apps.
+<p align="center">
+  <b>Professional DirectShow Webcam Capture Component for Delphi VCL</b><br>
+  High-performance • Asynchronous • Thread-safe • Easy drop-in integration
+</p>
 
----
+<p align="center">
+  <img src="https://img.shields.io/badge/Delphi-12.2%2B-red?style=for-the-badge" alt="Delphi">
+  <img src="https://img.shields.io/badge/Platform-Win32%20%7C%20Win64-blue?style=for-the-badge" alt="Platform">
+  <img src="https://img.shields.io/badge/Framework-VCL-8A2BE2?style=for-the-badge" alt="Framework">
+  <img src="https://img.shields.io/badge/Output-JPEG%20%7C%20BMP-green?style=for-the-badge" alt="Output">
+  <img src="https://img.shields.io/badge/Threading-Asynchronous-orange?style=for-the-badge" alt="Threading">
+</p>
 
-## 🚀 Overview
-This component provides real-time webcam capture with:
+<p align="center">
+  A lightweight <code>TWebcamCapture</code> component that captures webcam frames as <code>TBytes</code> and delivers them safely on the main thread via events.
+  Designed for smooth UI behavior and straightforward integration in Delphi VCL apps.
+</p>
 
-- Device enumeration
-- Camera selection by index
-- Configurable resolution and frame rate
-- JPEG or BMP frame output
-- Threaded capture pipeline (UI stays responsive)
-- Main-thread frame delivery via event callbacks
-- Snapshot access via `GetSingleFrame`
+<hr>
 
----
+<h2>🚀 Overview</h2>
 
-## ⭐ Key Features
+<ul>
+  <li>Device enumeration</li>
+  <li>Camera selection by index</li>
+  <li>Configurable resolution and frame rate</li>
+  <li>JPEG or BMP frame output</li>
+  <li>Threaded capture pipeline (UI stays responsive)</li>
+  <li>Main-thread frame delivery via event callbacks</li>
+  <li>Snapshot access via <code>GetSingleFrame</code></li>
+</ul>
 
-### 🎥 Capture
-- Capture webcam frames continuously
-- Output frames as raw `TBytes` (JPEG or BMP)
-- Track actual negotiated resolution and frame count
+<hr>
 
-### ⚙️ Configuration
-- `DeviceIndex`, `Width`, `Height`, `FrameRate`
-- `ImageFormat` (`wifJPEG` or `wifBMP`)
-- `JPEGQuality` (1..100)
+<h2>⭐ Key Features</h2>
 
-### 🧵 Threading & Stability
-- Dedicated capture thread for DirectShow/COM work
-- UI callback delivery through queued main-thread events
-- Startup handshake to avoid false “active” state
-- Frame dispatch backpressure (prevents runaway UI queue)
+<h3>🎥 Capture</h3>
+<ul>
+  <li>Capture webcam frames continuously</li>
+  <li>Output frames as raw <code>TBytes</code> (JPEG or BMP)</li>
+  <li>Track actual negotiated resolution and frame count</li>
+</ul>
 
-### 🧩 Delphi Integration
-- Registered as `TWebcamCapture` on the **Webcam** palette
-- Standard VCL component usage pattern
-- Works cleanly with dropped VCL controls (`TImage`, `TTimer`, etc.)
+<h3>⚙️ Configuration</h3>
+<ul>
+  <li><code>DeviceIndex</code>, <code>Width</code>, <code>Height</code>, <code>FrameRate</code></li>
+  <li><code>ImageFormat</code> (<code>wifJPEG</code> or <code>wifBMP</code>)</li>
+  <li><code>JPEGQuality</code> (1..100)</li>
+</ul>
 
----
+<h3>🧵 Threading &amp; Stability</h3>
+<ul>
+  <li>Dedicated capture thread for DirectShow/COM work</li>
+  <li>UI callback delivery through queued main-thread events</li>
+  <li>Startup handshake to avoid false “active” state</li>
+  <li>Frame dispatch backpressure (prevents runaway UI queue)</li>
+</ul>
 
-## 📦 Repository Contents
-- `WebcamCapture.pas`  
-  Core component implementation.
-- `WebcamCaptureReg.pas`  
-  IDE component registration.
-- `WebcamComponents.dpk` / `.dproj`  
-  Package project.
-- `Demos/Basic Demo`  
-  Local preview, device selection, snapshot save.
-- `Demos/Network Webcam Streaming Demo`  
-  Webcam streaming over network (uses NetCom7 sources).
+<h3>🧩 Delphi Integration</h3>
+<ul>
+  <li>Registered as <code>TWebcamCapture</code> on the <b>Webcam</b> palette</li>
+  <li>Standard VCL component usage pattern</li>
+  <li>Works cleanly with dropped VCL controls (<code>TImage</code>, <code>TTimer</code>, etc.)</li>
+</ul>
 
----
+<hr>
 
-## ✅ Requirements
+<h2>📦 Repository Contents</h2>
 
-### Core Component
-- Delphi VCL (tested with Delphi 12.2 Athens toolchain)
-- Windows desktop target
-- DirectShow-capable system with camera drivers
+<ul>
+  <li><code>WebcamCapture.pas</code> — Core component implementation.</li>
+  <li><code>WebcamCaptureReg.pas</code> — IDE component registration.</li>
+  <li><code>WebcamComponents.dpk</code> / <code>.dproj</code> — Package project.</li>
+  <li><code>Demos/Basic Demo</code> — Local preview, device selection, snapshot save.</li>
+  <li><code>Demos/Network Webcam Streaming Demo</code> — Webcam streaming over network (uses NetCom7 sources).</li>
+</ul>
 
-### Optional (Network Demo Only)
-- NetCom7 source path configured for demo build
+<hr>
 
----
+<h2>✅ Requirements</h2>
 
-## 🔧 Installation
+<h3>Core Component</h3>
+<ul>
+  <li>Delphi VCL (tested with Delphi 12.2 Athens toolchain)</li>
+  <li>Windows desktop target</li>
+  <li>DirectShow-capable system with camera drivers</li>
+</ul>
 
-1. Open `WebcamComponents.dproj` in Delphi.
-2. Build the package for your target (`Win32` and/or `Win64`).
-3. Install package in IDE.
-4. Drop `TWebcamCapture` from the **Webcam** component palette.
+<h3>Optional (Network Demo Only)</h3>
+<ul>
+  <li>NetCom7 source path configured for demo build</li>
+</ul>
 
----
+<hr>
 
-## ⚡ Quick Start (Basic Usage)
+<h2>🔧 Installation</h2>
 
-### 1) Drop components on a VCL form
-- `TWebcamCapture` (`WebcamCapture1`)
-- `TImage` (`Image1`)
+<ol>
+  <li>Open <code>WebcamComponents.dproj</code> in Delphi.</li>
+  <li>Build the package for your target (<code>Win32</code> and/or <code>Win64</code>).</li>
+  <li>Install package in IDE.</li>
+  <li>Drop <code>TWebcamCapture</code> from the <b>Webcam</b> component palette.</li>
+</ol>
 
-### 2) Configure and start
+<hr>
+
+<h2>⚡ Quick Start (Basic Usage)</h2>
+
+<h3>1) Drop components on a VCL form</h3>
+<ul>
+  <li><code>TWebcamCapture</code> (<code>WebcamCapture1</code>)</li>
+  <li><code>TImage</code> (<code>Image1</code>)</li>
+</ul>
+
+<h3>2) Configure and start</h3>
+
 ```pascal
 procedure TForm1.FormCreate(Sender: TObject);
 begin
@@ -118,68 +148,4 @@ begin
     S.Free;
   end;
 end;
-📚 API Reference
-Properties
-Property	Type	Description
-Active	Boolean	Start/stop capture
-DeviceIndex	Integer	Selected camera index
-Width / Height	Integer	Requested capture size
-FrameRate	Integer	Requested FPS
-ImageFormat	TWebcamImageFormat	wifJPEG or wifBMP
-JPEGQuality	Integer	JPEG quality (1..100)
-ActualWidth / ActualHeight	Integer	Negotiated capture size
-FrameCount	Int64	Number of captured frames
-LastFrameData	TBytes	Last captured encoded frame
-Methods
-Method	Description
-GetDevices	Returns available camera list
-RefreshDevices	Re-enumerates cameras
-GetSupportedResolutions	Queries camera-supported resolutions
-StartCapture / StopCapture	Manual control
-GetSingleFrame	Returns last captured frame bytes
-Events
-Event	Description
-OnFrameReceived	New frame (TBytes, width, height)
-OnCaptureStarted	Capture session started
-OnCaptureStopped	Capture session stopped
-OnCaptureError	Capture error text
-OnDeviceListChanged	Device count changed
-🧪 Demos
-Basic Demo
-Device enumeration and selection
-Live preview
-JPEG/BMP switch
-Snapshot saving
-FPS display
-Network Webcam Streaming Demo
-Uses NetCom7 TncServerSource / TncClientSource
-Broadcasts captured frames to remote clients
-Shows practical frame transport over TCP
-🧱 Dependencies
-Core Component
-No third-party runtime DLL required by this repo itself.
-Uses Windows COM/DirectShow APIs and system codecs.
-Important Note
-DirectShow availability and camera behavior can vary by machine, driver, and Windows media feature setup.
-⚠️ Compatibility Notes
-Windows desktop only (VCL + WinAPI/COM)
-Win32 and Win64 build targets supported
-Not intended for FMX/mobile platforms
-Camera privacy settings can block access if not allowed
-🛠️ Troubleshooting
-“No webcam devices detected”
-Verify camera is connected and not disabled
-Check Device Manager
-Check Windows camera permissions
-“Failed to build capture graph” or startup timeout
-Another app may already own the camera
-Driver may not expose expected DirectShow path
-Try different DeviceIndex or lower requested resolution/FPS
-Frame display issues
-Ensure OnFrameReceived handler is correctly assigned
-Use Image1.Picture.LoadFromStream(...) for TBytes payloads
-
-👨‍💻 Author
-BitmasterXor
-
-If this component helps your Delphi workflow, consider starring the repository.
+<hr> <h2>📚 API Reference</h2> <h3>Properties</h3> <table> <tr><th>Property</th><th>Type</th><th>Description</th></tr> <tr><td><code>Active</code></td><td>Boolean</td><td>Start/stop capture</td></tr> <tr><td><code>DeviceIndex</code></td><td>Integer</td><td>Selected camera index</td></tr> <tr><td><code>Width</code> / <code>Height</code></td><td>Integer</td><td>Requested capture size</td></tr> <tr><td><code>FrameRate</code></td><td>Integer</td><td>Requested FPS</td></tr> <tr><td><code>ImageFormat</code></td><td>TWebcamImageFormat</td><td><code>wifJPEG</code> or <code>wifBMP</code></td></tr> <tr><td><code>JPEGQuality</code></td><td>Integer</td><td>JPEG quality (1..100)</td></tr> <tr><td><code>ActualWidth</code> / <code>ActualHeight</code></td><td>Integer</td><td>Negotiated capture size</td></tr> <tr><td><code>FrameCount</code></td><td>Int64</td><td>Number of captured frames</td></tr> <tr><td><code>LastFrameData</code></td><td>TBytes</td><td>Last captured encoded frame</td></tr> </table> <h3>Methods</h3> <table> <tr><th>Method</th><th>Description</th></tr> <tr><td><code>GetDevices</code></td><td>Returns available camera list</td></tr> <tr><td><code>RefreshDevices</code></td><td>Re-enumerates cameras</td></tr> <tr><td><code>GetSupportedResolutions</code></td><td>Queries camera-supported resolutions</td></tr> <tr><td><code>StartCapture</code> / <code>StopCapture</code></td><td>Manual control</td></tr> <tr><td><code>GetSingleFrame</code></td><td>Returns last captured frame bytes</td></tr> </table> <h3>Events</h3> <table> <tr><th>Event</th><th>Description</th></tr> <tr><td><code>OnFrameReceived</code></td><td>New frame (<code>TBytes</code>, width, height)</td></tr> <tr><td><code>OnCaptureStarted</code></td><td>Capture session started</td></tr> <tr><td><code>OnCaptureStopped</code></td><td>Capture session stopped</td></tr> <tr><td><code>OnCaptureError</code></td><td>Capture error text</td></tr> <tr><td><code>OnDeviceListChanged</code></td><td>Device count changed</td></tr> </table> <hr> <h2>🧪 Demos</h2> <h3>Basic Demo</h3> <ul> <li>Device enumeration and selection</li> <li>Live preview</li> <li>JPEG/BMP switch</li> <li>Snapshot saving</li> <li>FPS display</li> </ul> <h3>Network Webcam Streaming Demo</h3> <ul> <li>Uses NetCom7 <code>TncServerSource</code> / <code>TncClientSource</code></li> <li>Broadcasts captured frames to remote clients</li> <li>Shows practical frame transport over TCP</li> </ul> <hr> <h2>🧱 Dependencies</h2> <h3>Core Component</h3> <ul> <li>No third-party runtime DLL required by this repo itself.</li> <li>Uses Windows COM/DirectShow APIs and system codecs.</li> </ul> <p><b>Important Note:</b> DirectShow availability and camera behavior can vary by machine, driver, and Windows media feature setup.</p> <hr> <h2>⚠️ Compatibility Notes</h2> <ul> <li>Windows desktop only (VCL + WinAPI/COM)</li> <li>Win32 and Win64 build targets supported</li> <li>Not intended for FMX/mobile platforms</li> <li>Camera privacy settings can block access if not allowed</li> </ul> <hr> <h2>🛠️ Troubleshooting</h2> <h3>“No webcam devices detected”</h3> <ul> <li>Verify camera is connected and not disabled</li> <li>Check Device Manager</li> <li>Check Windows camera permissions</li> </ul> <h3>“Failed to build capture graph” or startup timeout</h3> <ul> <li>Another app may already own the camera</li> <li>Driver may not expose expected DirectShow path</li> <li>Try a different <code>DeviceIndex</code> or lower requested resolution/FPS</li> </ul> <h3>Frame display issues</h3> <ul> <li>Ensure <code>OnFrameReceived</code> handler is correctly assigned</li> <li>Use <code>Image1.Picture.LoadFromStream(...)</code> for <code>TBytes</code> payloads</li> </ul> <hr> <h2>👨‍💻 Author</h2> <p><b>BitmasterXor</b></p> <p>If this component helps your Delphi workflow, consider starring the repository. ⭐</p> ```
